@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)file:///C:/Users/RAKSHITHA%20KG/OneDrive/Desktop/web.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rakshitha KG Portfolio</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(120deg, #1e3c72, #2a5298);
+  color: white;
+  scroll-behavior: smooth;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: rgba(0,0,0,0.7);
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+}
+
+header button {
+  margin: 5px;
+  padding: 8px 14px;
+  border: none;
+  background: #ff9800;
+  color: white;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+header button:hover {
+  background: #e68900;
+  transform: scale(1.1);
+}
+
+section {
+  padding: 70px 20px 30px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s ease;
+}
+
+section.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card {
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  margin: 10px auto;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  max-width: 700px;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);} 
+  to {opacity: 1; transform: translateY(0);} 
+}
+
+.profile-img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  margin-bottom: 15px;
+  animation: zoomIn 1s ease;
+}
+
+@keyframes zoomIn {
+  from {transform: scale(0);} 
+  to {transform: scale(1);} 
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin: 6px 0;
+}
+
+form input, form textarea {
+  width: 90%;
+  max-width: 500px;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+}
+
+form button {
+  padding: 10px 20px;
+  border: none;
+  background: #ff9800;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+form button:hover {
+  background: #e68900;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <button onclick="scrollToSection(&#39;about&#39;)">About</button>
+  <button onclick="scrollToSection(&#39;education&#39;)">Education</button>
+  <button onclick="scrollToSection(&#39;skills&#39;)">Skills</button>
+  <button onclick="scrollToSection(&#39;certifications&#39;)">Certifications</button>
+  <button onclick="scrollToSection(&#39;project&#39;)">Project</button>
+  <button onclick="scrollToSection(&#39;contact&#39;)">Contact</button>
+</header>
+
+<section id="about" class="active">
+  <div class="card">
+    <img src="./index_files/img.jpeg" alt="Rakshitha K G" width="100px" ,height="70px">
+    <h1>Rakshitha KG</h1>
+    <p>I am a student with an interest in technology and web development. I enjoy learning new skills, working on creative projects, and improving my knowledge every day.</p>
+  </div>
+</section>
+
+<section id="education" class="active">
+  <div class="card">
+    <h2>Education</h2>
+    <ul>
+      <li>MCA (Pursuing) - MIT Thandavapura College</li>
+      <li>BCA - 7.84 CGPA - NIE First Grade College</li>
+      <li>PUC - 86.33% - Marimallappa PU College</li>
+      <li>SSLC - 69.76% - Marimallappa High School</li>
+    </ul>
+  </div>
+</section>
+
+<section id="skills" class="active">
+  <div class="card">
+    <h2>Skills</h2>
+    <ul>
+      <li>C</li>
+      <li>Java</li>
+      <li>HTML</li>
+      <li>CSS</li>
+    </ul>
+  </div>
+</section>
+
+<section id="certifications" class="active">
+  <div class="card">
+    <h2>Certifications</h2>
+    <ul>
+      <li>AI &amp; ML with Full Stack Development</li>
+      <li>Artificial Intelligence Fundamentals - IBM</li>
+      <li>Customer Engagement Courses - IBM</li>
+      <li>Digital Productivity with AI</li>
+    </ul>
+  </div>
+</section>
+
+<section id="project" class="active">
+  <div class="card">
+    <h2>Project</h2>
+    <p>Stress Prediction in Working Employees using Machine Learning</p>
+  </div>
+</section>
+
+<section id="contact" class="active">
+  <div class="card">
+    <h2>Contact Me</h2>
+    <p>📞 7892815793</p>
+    <p>📧 rakshithagundappa29@gmail.com</p>
+
+    <form onsubmit="handleSubmit(event)">
+      <input type="text" placeholder="Your Name" required=""><br>
+      <input type="email" placeholder="Your Email" required=""><br>
+      <textarea rows="4" placeholder="Your Message" required=""></textarea><br>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<script>
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+}
+
+const sections = document.querySelectorAll('section');
+
+window.addEventListener('scroll', () => {
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 80) {
+      section.classList.add('active');
+    }
+  });
+});
+
+function handleSubmit(e) {
+  e.preventDefault();
+  alert('Message sent successfully!');
+}
+</script>
+
+
+</body></html>
